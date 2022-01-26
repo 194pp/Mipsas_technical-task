@@ -4,7 +4,7 @@ import {ownRepType} from "../store";
 import {ReactNode, useEffect} from "react";
 import AvailableRepos from "../components/home/AvailableRepos";
 import axios from "axios";
-import {issuesPepPage} from "../configs/configs";
+import {issuesPerPage} from "../configs/configs";
 import MyButton from "../components/home/MyButton";
 import MyInput from "../components/home/MyInput";
 import colors from "../constants/colors";
@@ -30,15 +30,7 @@ export default function Home(props: any) {
     dispatch({type: "clear"});
   }
   const retrieveClickHandler = () => {
-    axios.get(`https://api.github.com/repos/${owner}/${repo}/issues?page1&per_page=${issuesPepPage}`)
-      .then(response => {
-        dispatch({
-          type: "fetchIssues",
-          payload: response.data,
-        });
-      })
-      .then(() => props.navigation.navigate('Issues'))
-      .catch(err => console.log("getting issues failed."));
+    props.navigation.navigate('Issues');
   }
   const ownerInputChangeHandler = (newText: string) => {
     dispatch({
