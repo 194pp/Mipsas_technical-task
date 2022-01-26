@@ -5,6 +5,7 @@ import {useEffect} from "react";
 import AvailableRepos from "../components/home/AvailableRepos";
 import axios from "axios";
 import {issuesPepPage} from "../configs/configs";
+import MyButton from "../components/home/MyButton";
 
 export default function Home(props: any) {
   const {owner, repo} = useSelector((state: ownRepType) => state);
@@ -77,12 +78,8 @@ export default function Home(props: any) {
         />
       </View>
       <View style={styles.formButtons}>
-        <Pressable onPress={clearClickHandler}>
-          <Text style={styles.btn}>Clear</Text>
-        </Pressable>
-        <Pressable onPress={retrieveClickHandler}>
-          <Text style={styles.btn}>Retrieve</Text>
-        </Pressable>
+        <MyButton title='Clear' onPress={clearClickHandler}/>
+        <MyButton title='Retrieve' onPress={retrieveClickHandler}/>
       </View>
       <AvailableRepos />
     </View>
@@ -115,17 +112,4 @@ const styles = StyleSheet.create({
   formButtons: {
     flexDirection: 'row',
   },
-  btn: {
-    backgroundColor: '#3d414a',
-    paddingVertical: 4,
-    paddingHorizontal: 8,
-    borderColor: '#7094be',
-    borderWidth: 1,
-    borderRadius: 2,
-    margin: 2,
-    color: 'white',
-    textShadowColor: 'rgba(124,124,124,0)',
-    textShadowRadius: 0,
-    alignSelf: 'center'
-  }
 })
