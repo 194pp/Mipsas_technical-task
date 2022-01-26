@@ -61,7 +61,7 @@ export default function Home(props: any) {
       <View style={styles.box}>
         <Text style={styles.text}>Repository Owner:</Text>
         <TextInput
-          placeholder={'enter'}
+          placeholder={'enter owner'}
           value={owner}
           style={styles.textInput}
           onChangeText={ownerInputChangeHandler}
@@ -70,7 +70,7 @@ export default function Home(props: any) {
       <View style={styles.box}>
         <Text style={styles.text}>Repository:</Text>
         <TextInput
-          placeholder={'enter'}
+          placeholder={'enter repository'}
           value={repo}
           style={styles.textInput}
           onChangeText={repoInputChangeHandler}
