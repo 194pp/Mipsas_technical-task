@@ -42,11 +42,6 @@ function ownerRepoReducer (state = initialState, action: { type: string; payload
         ...state,
         availableRepos: action.payload.availableRepos,
       };
-    case 'clearRepos':
-      return {
-        ...state,
-        availableRepos: [],
-      }
     case 'fetchIssues':
       return {
         ...state,
