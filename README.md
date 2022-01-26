@@ -15,3 +15,4 @@ by Žilvinas Kančys
 ## Usage
 
 * To modify issues-per-page or default owner/repo input field data, edit `configs.ts` file.
+* For testing, you can use `defaultOwner = "axios"; defaultRepo = "axios";` as it has plenty of issues for infinite scroll.
