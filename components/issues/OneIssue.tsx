@@ -1,6 +1,7 @@
 import {Text, StyleSheet} from "react-native";
 import {List} from "react-native-paper";
 import {useState} from "react";
+import MyCard from "../global/MyCard";
 
 const OneIssue = ({item} : {item: any}) => {
   const [expanded, setExpanded] = useState(false);
@@ -24,7 +25,7 @@ const OneIssue = ({item} : {item: any}) => {
   }
 
   return (
-    <List.Section style={styles.container}>
+    <MyCard>
       <Text style={styles.title}>{item.item.title}</Text>
       <Text style={styles.userLogin}>
         Issued by: <Text style={{fontWeight: 'bold'}}>{item.item.user.login}</Text>
@@ -40,19 +41,11 @@ const OneIssue = ({item} : {item: any}) => {
 
       <Text style={styles.createdAt}>Created at: {dateFormatter(item.item.created_at)}</Text>
       <Text style={styles.createdAt}>Updated at: {dateFormatter(item.item.updated_at)}</Text>
-    </List.Section>
+    </MyCard>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    borderWidth: 1,
-    borderColor: 'black',
-    margin: 8,
-    padding: 8,
-    borderRadius: 8,
-    backgroundColor: 'rgb(63,63,63)',
-  },
   title: {
     fontWeight: 'bold',
     fontSize: 16,

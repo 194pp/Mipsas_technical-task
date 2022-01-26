@@ -2,7 +2,10 @@ import {Pressable, StyleSheet, Text} from "react-native";
 
 const MyButton = (props: any) => {
   return (
-    <Pressable onPress={props.onPress}>
+    <Pressable onPress={props.onPress}
+               style={props.disabled ? styles.disabled : {}}
+               disabled={props.disabled}
+    >
       <Text style={styles.btn}>{props.title}</Text>
     </Pressable>
   )
@@ -21,6 +24,9 @@ const styles = StyleSheet.create({
     textShadowColor: 'rgba(124,124,124,0)',
     textShadowRadius: 0,
     alignSelf: 'center'
+  },
+  disabled: {
+    opacity: 0.5,
   }
 })
 

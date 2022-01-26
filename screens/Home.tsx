@@ -9,7 +9,7 @@ import MyButton from "../components/home/MyButton";
 import MyInput from "../components/home/MyInput";
 
 export default function Home(props: any) {
-  const {owner, repo} = useSelector((state: ownRepType) => state);
+  const {owner, repo, availableRepos} = useSelector((state: ownRepType) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -73,8 +73,16 @@ export default function Home(props: any) {
         onChangeText={repoInputChangeHandler}
       />
       <View style={styles.formButtons}>
-        <MyButton title='Clear' onPress={clearClickHandler}/>
-        <MyButton title='Retrieve' onPress={retrieveClickHandler}/>
+        <MyButton
+          title='Clear'
+          onPress={clearClickHandler}
+          disabled={!owner && !repo}
+        />
+        <MyButton
+          title='Retrieve'
+          onPress={retrieveClickHandler}
+          disabled={!availableRepos.includes(repo)}
+        />
       </View>
       <AvailableRepos />
     </View>
