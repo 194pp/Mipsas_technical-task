@@ -2,6 +2,7 @@ import {Text, StyleSheet} from "react-native";
 import {List} from "react-native-paper";
 import {useState} from "react";
 import MyCard from "../global/MyCard";
+import colors from "../../constants/colors";
 
 const OneIssue = ({item} : {item: any}) => {
   const [expanded, setExpanded] = useState(false);
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     fontSize: 16,
-    color: 'salmon',
+    color: colors.accent,
   },
   bodyAccordion: {
     padding: 0,
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
   },
   userLogin: {
     alignSelf: "flex-end",
-    color: 'dodgerblue',
+    color: colors.info,
   },
   createdAt: {
     color: 'grey',

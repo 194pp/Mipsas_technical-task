@@ -3,7 +3,7 @@ import colors from "../../constants/colors";
 
 const MyCard = (props: any) => {
   return (
-    <View style={styles.card}>
+    <View style={{...styles.card, ...props.style}}>
       {props.children}
     </View>
   )

@@ -1,12 +1,14 @@
 import {Pressable, StyleSheet, View, Text, TextInput} from "react-native"
 import {useDispatch, useSelector} from "react-redux";
 import {ownRepType} from "../store";
-import {useEffect} from "react";
+import {ReactNode, useEffect} from "react";
 import AvailableRepos from "../components/home/AvailableRepos";
 import axios from "axios";
 import {issuesPepPage} from "../configs/configs";
 import MyButton from "../components/home/MyButton";
 import MyInput from "../components/home/MyInput";
+import colors from "../constants/colors";
+import MyCard from "../components/global/MyCard";
 
 export default function Home(props: any) {
   const {owner, repo, availableRepos} = useSelector((state: ownRepType) => state);
@@ -27,7 +29,6 @@ export default function Home(props: any) {
   const clearClickHandler = () => {
     dispatch({type: "clear"});
   }
-
   const retrieveClickHandler = () => {
     axios.get(`https://api.github.com/repos/${owner}/${repo}/issues?page1&per_page=${issuesPepPage}`)
       .then(response => {
@@ -39,7 +40,6 @@ export default function Home(props: any) {
       .then(() => props.navigation.navigate('Issues'))
       .catch(err => console.log("getting issues failed."));
   }
-
   const ownerInputChangeHandler = (newText: string) => {
     dispatch({
       type: "change",
@@ -59,7 +59,7 @@ export default function Home(props: any) {
   }
 
   return (
-    <View style={styles.home}>
+    <MyCard style={styles.home}>
       <MyInput
         label='Repository Owner:'
         placeholder='enter owner'
@@ -85,16 +85,14 @@ export default function Home(props: any) {
         />
       </View>
       <AvailableRepos />
-    </View>
+    </MyCard>
   )
 }
 
 const styles = StyleSheet.create({
   home: {
-    backgroundColor: 'rgb(63,63,63)',
     padding: 16,
     margin: 16,
-    borderRadius: 8,
     minWidth: "90%",
   },
   formButtons: {
