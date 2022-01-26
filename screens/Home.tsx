@@ -6,6 +6,7 @@ import AvailableRepos from "../components/home/AvailableRepos";
 import axios from "axios";
 import {issuesPepPage} from "../configs/configs";
 import MyButton from "../components/home/MyButton";
+import MyInput from "../components/home/MyInput";
 
 export default function Home(props: any) {
   const {owner, repo} = useSelector((state: ownRepType) => state);
@@ -59,24 +60,18 @@ export default function Home(props: any) {
 
   return (
     <View style={styles.home}>
-      <View style={styles.box}>
-        <Text style={styles.text}>Repository Owner:</Text>
-        <TextInput
-          placeholder={'enter owner'}
-          value={owner}
-          style={styles.textInput}
-          onChangeText={ownerInputChangeHandler}
-        />
-      </View>
-      <View style={styles.box}>
-        <Text style={styles.text}>Repository:</Text>
-        <TextInput
-          placeholder={'enter repository'}
-          value={repo}
-          style={styles.textInput}
-          onChangeText={repoInputChangeHandler}
-        />
-      </View>
+      <MyInput
+        label='Repository Owner:'
+        placeholder='enter owner'
+        value={owner}
+        onChangeText={ownerInputChangeHandler}
+      />
+      <MyInput
+        label='Repository:'
+        placeholder='enter repository'
+        value={repo}
+        onChangeText={repoInputChangeHandler}
+      />
       <View style={styles.formButtons}>
         <MyButton title='Clear' onPress={clearClickHandler}/>
         <MyButton title='Retrieve' onPress={retrieveClickHandler}/>
@@ -93,21 +88,6 @@ const styles = StyleSheet.create({
     margin: 16,
     borderRadius: 8,
     minWidth: "90%",
-  },
-  box: {
-    borderBottomWidth: 1,
-    marginBottom: 4,
-    padding: 4,
-    borderColor: "white",
-  },
-  textInput: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
-  text: {
-    color: '#7094be',
-    fontWeight: 'bold',
   },
   formButtons: {
     flexDirection: 'row',
