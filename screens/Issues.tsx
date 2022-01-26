@@ -46,7 +46,7 @@ const Issues = () => {
         <FlatList
           data={issues}
           renderItem={item => <OneIssue item={item}/>}
-          keyExtractor={(item: any) => item.id * 100 * Math.random()}
+          keyExtractor={(item: any) => (item.id * 100 * Math.random()).toString()}
           onEndReached={loadMoreItems}
           ListEmptyComponent={<NoIssues/>}
         /> :
