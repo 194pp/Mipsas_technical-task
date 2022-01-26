@@ -5,6 +5,7 @@ import OneIssue from "../components/issues/OneIssue";
 import axios from "axios";
 import {issuesPepPage} from "../configs/configs";
 import {useState} from "react";
+import NoIssues from "../components/issues/NoIssues";
 
 const Issues = () => {
   const {owner, repo, issues} = useSelector((state: ownRepType) => state);
@@ -20,25 +21,19 @@ const Issues = () => {
         });
         setPageCount(curr => curr + 1);
       }).catch(err => console.log(err));
-    // console.log('edge reached');
   }
 
   return (
-    <View style={styles.container}>
+    <View style={{height: "100%"}}>
       <FlatList
         data={issues}
         renderItem={item => <OneIssue item={item}/>}
         keyExtractor={item => item.id * 100 * Math.random()}
         onEndReached={loadMoreItems}
+        ListEmptyComponent={<NoIssues/>}
       />
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    height: "100%",
-  },
-})
 
 export default Issues;
