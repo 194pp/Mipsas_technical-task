@@ -1,13 +1,11 @@
-import {Pressable, StyleSheet, View, Text, TextInput} from "react-native"
+import {StyleSheet, View} from "react-native"
 import {useDispatch, useSelector} from "react-redux";
 import {ownRepType} from "../store";
-import {ReactNode, useEffect} from "react";
+import {useEffect} from "react";
 import AvailableRepos from "../components/home/AvailableRepos";
 import axios from "axios";
-import {issuesPerPage} from "../configs/configs";
 import MyButton from "../components/home/MyButton";
 import MyInput from "../components/home/MyInput";
-import colors from "../constants/colors";
 import MyCard from "../components/global/MyCard";
 
 export default function Home(props: any) {
